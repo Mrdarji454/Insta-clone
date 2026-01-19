@@ -1,9 +1,9 @@
 import mongoose from "mongoose";
 import User from "../models/database.js";
-import { hashPassword, verifyPassword } from "../utils/func.js";
+import { hashPassword, verifyPassword, generateToken } from "../utils/func.js";
 
 export const getLoginPage = async (req, res) => {
-    res.render('login');
+    res.render('login', { error: null });
 };
 
 export const renderProfilePage = async (req, res) => {
@@ -16,21 +16,29 @@ export const renderProfilePage = async (req, res) => {
 
         // ✅ use findOne (returns OBJECT, not array)
         if (!UserData) {
-            return res.send("user is not is not found");
+            // return res.send("user is not is not found");
+            return res.render("login", { error: "⨂ Invalid Username , try again" });
         }
 
         // ✅ verify using argon2
         const isVerify = await verifyPassword(UserData.password, password);
 
         if (isVerify) {
+
+            const token = generateToken({
+                UserName: UserData.user_name,
+            });
+
+            res.cookie("acess_token", token);
             res.render("profilepage");
+
         } else {
-            res.send("password is wrong");
+            return res.render("login", { error: "⨂ Password is incorrect, Try again" });
         }
 
     } catch (error) {
         console.log(error);
-        console.log("error at rendr Profilepage");
+        console.log("error at render Profilepage");
     }
 };
 
