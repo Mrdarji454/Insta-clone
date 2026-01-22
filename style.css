@@ -7,20 +7,31 @@ body {
   height: 100vh;
   display: flex;
   justify-content: center;
-  align-items: center;
 }
+
 .outerdiv {
-  max-width: 550px;
-  height: 100%;
+  max-width: 450px;
   width: 100%;
+  height: 100vh; /* આખી સ્ક્રીનની ઊંચાઈ લેશે */
   border: 1px solid black;
+  position: relative; /* આની અંદર bottom-nav ને પોઝીશન આપવા માટે */
+  display: flex;
+  flex-direction: column; /* બાળકોને ઉપરથી નીચે ગોઠવવા */
 }
+
 header .title_bar {
   margin-top: 5px;
   display: flex;
   width: 100%;
   justify-content: space-between;
 }
+
+main {
+  flex: 1;
+  overflow-y: auto;
+  padding-bottom: 50px; /* bottom-nav height જેટલું */
+}
+
 .rightButton {
   margin-right: 10px;
   width: 70px;
@@ -49,15 +60,129 @@ header .title_bar {
   width: 100%;
   align-items: center;
 }
-.user-photo {
+.user-photo img {
   height: 100px;
   width: 100px;
   border: 2px solid black;
   border-radius: 50%;
-  background-image: url("100k-ai-faces-6.jpg");
   background-size: cover;
 }
 .stat {
   font-size: 17px;
   text-align: center;
+}
+.editProfile {
+  margin: 10px;
+  display: grid;
+  align-items: center;
+  grid-template-columns: 5fr 5fr 1fr;
+  gap: 6px;
+}
+.editProfile #Edit_Profile,
+#Share_Profile {
+  height: 30px;
+  font-size: 1rem;
+  border-radius: 5px;
+  letter-spacing: -0.2px;
+  font-weight: 600;
+  border: none;
+  background-color: rgba(128, 128, 128, 0.14);
+}
+.editProfile #suggestionButton {
+  padding-left: 3px;
+}
+
+#Edit_Profile:hover,
+#Share_Profile:hover,
+#suggestionButton:hover {
+  cursor: pointer;
+}
+
+.highLightSection {
+  margin: 20px 10px;
+}
+.highlight {
+  width: 54px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.highlight img {
+  width: 54px;
+}
+.highlight p {
+  font-size: 12px;
+}
+
+.postReel {
+  width: 100%;
+  display: grid;
+  gap: 5px;
+  grid-template-columns: 1fr 1fr;
+}
+.postReel #post {
+  background-color: white;
+  border: none;
+  border-bottom: 1px solid black;
+}
+.postReel #post:hover {
+  cursor: pointer;
+}
+.postReel #post img {
+  width: 30px;
+  background-color: white;
+}
+
+.postes {
+  display: grid;
+  margin: 3px auto;
+  grid-template-columns: repeat(3, 1fr);
+  background-color: #ffffff;
+}
+.postes img {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  display: block;
+  border: 1px solid #dbdbdb;
+  transition: opacity 0.3s ease;
+}
+.postes img:hover {
+  opacity: 0.8; /* ફોટો થોડો ઝાંખો થશે */
+  cursor: pointer;
+}
+
+/* bottom navigation bar */
+.bottom-nav {
+  position: sticky;
+  bottom: 0;
+
+  width: 100%;
+  height: 50px;
+
+  background-color: #ffffff;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+
+  border-top: 1px solid #dbdbdb;
+  z-index: 1000;
+}
+
+/* દરેક આઈટમ માટે */
+.nav-item {
+  text-decoration: none;
+  color: #262626;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+/* પ્રોફાઈલ પિક્ચર માટે */
+.nav-profile-pic {
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 1px solid #dbdbdb;
 }
